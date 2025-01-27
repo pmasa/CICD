@@ -1,25 +1,26 @@
 pipeline {
   environment {
-    registry = "pedromasa/cicd"
-    registryCredential = 'dockerhub'
+    registry = "pedromasa/webapp"
+    registryCredential = 'dockerhub_id'
     dockerImage = ''
+
   }
   agent any
   stages {
-    stage('Cloning Git') {
+    stage('Cloning Git  ') {
       steps {
-        git 'ssh://git@github.com:pmasa/CICD.git'
+        git 'https://github.com/pmasa/CICD.git'
       }
     }
-    stage('Building Docker image ') {
+    stage('Building Docker image') {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        
+          
         }
       }
     }
-    stage('Push Image to Docker Hub ') {
+    stage('Push Image to Docker Hub') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -30,20 +31,5 @@ pipeline {
       }
     }
 
-stage ('Deploy ') {
-    steps{
-        sshagent(credentials : ['dockerhub']) {
-            sh 'docker pull pedromasa/cicd:latest'
-            sh 'docker stop cicd'
-            sh 'docker rm cicd'
-            sh 'docker rmi pedromasa/cicd:current || true'
-            sh 'docker tag pedromasa/cicd:latest pedromasa/cicd:current'
-            sh 'docker run -d --name cicd -p 8082:80 pedromasa/cicd:latest'
-        }
-    }
-}
-    }
       
-    }   
-  
-
+    }      
