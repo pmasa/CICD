@@ -30,7 +30,7 @@ pipeline {
       }
     }
 
-stage ('Deploy') {
+stage ('Deploy ') {
     steps{
         sshagent(credentials : ['dockerhub']) {
             sh 'docker pull pedromasa/cicd:latest'
