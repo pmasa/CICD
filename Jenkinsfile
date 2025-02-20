@@ -3,7 +3,7 @@ pipeline {
     registry = "pedromasa/webapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    githubtoken = 'GithubToken'
+    GITHUB_CREDENTIALS = 'GithubToken'
 
   }
   agent any
@@ -45,7 +45,7 @@ pipeline {
             sh "git config user.name devops"
             sh "git add . "
             sh "git commit -m 'Update image version to: $BUILD_NUMBER'"
-            sh"git push https://githubtoken@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f"
+            sh"git push https://env.GITHUB_CREDENTIALS@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f"
 
           }
         }
