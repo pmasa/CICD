@@ -35,7 +35,7 @@ pipeline {
 
     stage('Update Manifest') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'gihubpwd', passwordVariable: 'Tranchin@2024', usernameVariable: 'pmasa')]) {
+        withCredentials([usernamePassword(credentialsId: 'gihubpwd', passwordVariable: 'xxxxxx', usernameVariable: 'pmasa')]) {
           sh "rm -rf jenkins-gitops-k8s"
           sh "git clone https://github.com/pmasa/jenkins-gitops-k8s.git"
           sh "cd jenkins-gitops-k8s"
