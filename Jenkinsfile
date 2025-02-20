@@ -45,7 +45,7 @@ pipeline {
             sh "git config user.name devops"
             sh "git add . "
             sh "git commit -m 'Update image version to: $BUILD_NUMBER'"
-            sh"git push https://credentialsId@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f"
+            sh"git push https://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@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f"
 
           }
         }
