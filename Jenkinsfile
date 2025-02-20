@@ -3,7 +3,7 @@ pipeline {
     registry = "pedromasa/webapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    GITHUB_CREDENTIALS = 'GithubToken'
+    GITHUB_CREDENTIALS = 'gihubpwd'
 
   }
   agent any
