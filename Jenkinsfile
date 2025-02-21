@@ -3,8 +3,7 @@ pipeline {
     registry = "pedromasa/webapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    GITHUB_CREDENTIALS = 'githubcredid'
-
+    GIT_CREDS = credentials('githubcredid')
   }
   agent any
   stages {
@@ -36,7 +35,7 @@ pipeline {
     stage('Update Manifest'){
       steps{
         script{
-            GIT_CREDS = credentials('githubcredid')
+            
             sh 'echo ${GIT_CREDS_USR}:${GIT_CREDS_PSW}'
             sh '''
                 rm -rf jenkins-gitops-k8s
