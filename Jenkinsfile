@@ -46,7 +46,7 @@ pipeline {
                 git config user.name devops
                 git add .
                 git commit -m "push to git"
-                git push https://pmasa:Tranchin2025@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f
+                git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f
             '''
         }
       }
