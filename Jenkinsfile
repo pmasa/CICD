@@ -3,7 +3,7 @@ pipeline {
     registry = "pedromasa/webapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    GITHUB_CREDENTIALS = 'gihubpwd'
+    GITHUB_CREDENTIALS = 'githubcredid'
 
   }
   agent any
@@ -36,7 +36,7 @@ pipeline {
     stage('Update Manifest'){
       steps{
         script{
-            GIT_CREDS = credentials('gihubpwd')
+            GIT_CREDS = credentials('githubcredid')
             sh '''
                 rm -rf jenkins-gitops-k8s
                 git clone https://github.com/pmasa/jenkins-gitops-k8s.git
