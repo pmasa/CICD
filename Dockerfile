@@ -1,5 +1,4 @@
-#FROM kyma/docker-nginx:latest
 FROM nginx
-COPY ./ /var/www
-CMD 'nginx'
+COPY static-html-directory /usr/share/nginx/html
+
 
