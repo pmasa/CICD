@@ -3,7 +3,9 @@ pipeline {
     registry = "pedromasa/webapp"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    //GIT_CREDS = credentials('githubcredid')
+    GIT_REPO_NAME = "jenkins-gitops-k8s"
+    GIT_USER_NAME = "pmasa"
+    GIT_USER_EMAIL = "devopsmas@gmail.com"
     GIT_TOKEN = credentials('GithubToken')
   }
   agent any
@@ -36,14 +38,12 @@ pipeline {
     stage('Update Manifest'){
       steps{
         script{
-            
-            sh 'echo ${GIT_TOKEN}'
             sh '''
-                rm -rf jenkins-gitops-k8s
-                git clone https://github.com/pmasa/jenkins-gitops-k8s.git
-                cd jenkins-gitops-k8s
+                rm -rf ${GIT_REPO_NAME}
+                git clone https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}
+                cd ${GIT_REPO_NAME}
                 
-                git config user.email devopsmas@gmail.com
+                git config user.email ${GIT_USER_EMAIL}
                 git config user.name devops
 
                 cat deployment.yaml
@@ -52,7 +52,7 @@ pipeline {
                 
                 git add .
                 git commit -m "push manifest file"
-                git push https://${GIT_TOKEN}@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f
+                git push https://${GIT_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master -f
             '''
         }
       }
