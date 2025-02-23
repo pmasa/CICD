@@ -42,11 +42,11 @@ pipeline {
                 rm -rf jenkins-gitops-k8s
                 git clone https://github.com/pmasa/jenkins-gitops-k8s.git
                 cd jenkins-gitops-k8s
-                sed -i "s+nginx.*+nginx:${BUILD_NUMBER}+g" deployment.yaml
+                sed "s/{{TAG}}/${BUILD_NUMBER}/g" deployment-template.yaml > deployment.yaml
                 git config user.email devopsmas@gmail.com
                 git config user.name devops
                 git add deployment.yaml
-                git commit -m "push to git"
+                git commit -m "push manifest file"
                 git push https://${GIT_TOKEN}@github.com/pmasa/jenkins-gitops-k8s.git HEAD:master -f
             '''
         }
