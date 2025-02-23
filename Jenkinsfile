@@ -47,7 +47,7 @@ pipeline {
                 git config user.name devops
 
                 cat deployment.yaml
-                sed -i 's+nginx.*+nginx:${BUILD_NUMBER}+g' deployment.yaml"
+                sed -i "s+nginx.*+nginx:${BUILD_NUMBER}+g" deployment.yaml
                 cat deployment.yaml
                 
                 git add .
