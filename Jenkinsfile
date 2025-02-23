@@ -42,7 +42,7 @@ pipeline {
                 rm -rf jenkins-gitops-k8s
                 git clone https://github.com/pmasa/jenkins-gitops-k8s.git
                 cd jenkins-gitops-k8s
-                sed -i "s+nginx.*+nginx:${BUILD_NUMBER}+g' deployment.yaml"
+                sed -i "s+nginx.*+nginx:${BUILD_NUMBER}+g" deployment.yaml
                 git config user.email devopsmas@gmail.com
                 git config user.name devops
                 git add .
