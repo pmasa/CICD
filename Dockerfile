@@ -19,7 +19,7 @@ MAINTAINER Pedro
 RUN apt-get update && apt-get install -y nginx && apt-get -y clean
 
 # Copy start script
-COPY start-nginx.sh /opt/
+#COPY start-nginx.sh /opt/
 
 
 ## IMAGE CONFIGURATION
@@ -28,6 +28,7 @@ COPY start-nginx.sh /opt/
 #EXPOSE 80 443
 
 # Update (optional) & start nginx
-CMD ["bash", "/opt/start-nginx.sh"]
+#CMD ["bash", "/opt/start-nginx.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 
 
