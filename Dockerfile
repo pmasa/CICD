@@ -25,7 +25,7 @@ COPY start-nginx.sh /opt/
 ## IMAGE CONFIGURATION
 
 # Expose HTTP & HTTPS
-EXPOSE 80 443
+#EXPOSE 80 443
 
 # Update (optional) & start nginx
 CMD ["bash", "/opt/start-nginx.sh"]
