@@ -52,7 +52,7 @@ pipeline {
                 
                 git add .
                 git commit -m "push manifest file"
-                git push https://${GIT_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master -f
+                git push https://${GIT_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main -f
             '''
         }
       }
