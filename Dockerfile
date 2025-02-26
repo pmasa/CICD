@@ -19,7 +19,7 @@ MAINTAINER Pedro
 RUN apt-get update && apt-get install -y nginx && apt-get -y clean
 
 # Copy start script
-COPY files/start-nginx.sh /opt/
+COPY start-nginx.sh /opt/
 
 
 ## IMAGE CONFIGURATION
