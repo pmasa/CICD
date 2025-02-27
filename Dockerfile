@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y nginx && apt-get -y clean
 ## IMAGE CONFIGURATION
 
 # Expose HTTP & HTTPS
-#EXPOSE 80 443
+EXPOSE 81 443
 
 # Update (optional) & start nginx
 #CMD ["bash", "/opt/start-nginx.sh"]
