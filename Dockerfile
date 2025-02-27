@@ -1,3 +1,4 @@
+FROM balenalib/raspberry-pi
 # Base Image 
 FROM nginx:1.10.1-alpine
 #Copy the index.html file /usr/share/nginx/html/
