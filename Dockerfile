@@ -1,13 +1,12 @@
-FROM balenalib/raspberry-pi
 # Base Image 
-FROM nginx:1.10.1-alpine
+#FROM nginx:1.10.1-alpine
 #Copy the index.html file /usr/share/nginx/html/
-COPY index.html /usr/share/nginx/html/
+#COPY index.html /usr/share/nginx/html/
 
 # -------- new ---------
 
 # Set the base image
-#FROM balenalib/raspberry-pi
+FROM balenalib/raspberry-pi
 
 # File Author / Maintainer
 #MAINTAINER Pedro 
@@ -17,7 +16,7 @@ COPY index.html /usr/share/nginx/html/
 
 # Install nginx
 # Separate nginx user not required, as www-data account is already being used
-#RUN apt-get update && apt-get install -y nginx && apt-get -y clean
+RUN apt-get update && apt-get install -y nginx && apt-get -y clean
 
 # Copy start script
 #COPY start-nginx.sh /opt/
